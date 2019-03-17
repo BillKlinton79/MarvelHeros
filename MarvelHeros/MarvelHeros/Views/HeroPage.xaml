@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:FFImageLoading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:FFImageTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="MarvelHeros.Views.HeroPage"
+             Title="Character"
+             BackgroundColor="White">
+    <ScrollView>
+        <StackLayout Padding="7"
+                     Spacing="10">
+            <FFImageLoading:CachedImage Source="{Binding Hero.Thumbnail.Path}"
+                                    WidthRequest="235"
+                                    HeightRequest="235"
+                                    DownsampleToViewSize="True">
+                <FFImageLoading:CachedImage.Transformations>
+                    <FFImageTransformations:CircleTransformation/>
+                </FFImageLoading:CachedImage.Transformations>
+            </FFImageLoading:CachedImage>
+            <BoxView HeightRequest="1"
+                 WidthRequest="1"
+                 Color="LightGray"></BoxView>
+            <Label Text="Name:"
+                   FontFamily="{StaticResource MarvelRegular}"
+                   FontSize="Large"
+                   TextColor="#cc0000"></Label>
+            <Label Text="{Binding Hero.Name}"
+                   FontSize="Medium"></Label>
+            <Label Text="Description:"
+                   FontSize="Large"
+                   FontFamily="{StaticResource MarvelRegular}"
+                   TextColor="#cc0000"></Label>
+            <Label Text="{Binding Hero.Description}"
+                   FontSize="Medium"></Label>
+            <StackLayout Orientation="Horizontal"
+                         Spacing="15">
+                <Label Text="Comics:"
+                       TextColor="#cc0000"
+                       FontSize="Large"
+                       VerticalOptions="Center"
+                       FontFamily="{StaticResource MarvelRegular}"></Label>
+                <Label Text="{Binding Hero.Comics.Available}"
+                       FontSize="Medium"></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         Spacing="15">
+                <Label Text="Series:"
+                       TextColor="#cc0000"
+                       FontSize="Large"
+                       FontFamily="{StaticResource MarvelRegular}"
+                       VerticalOptions="Center"></Label>
+                <Label Text="{Binding Hero.Series.Available}"
+                       FontSize="Medium"
+                       VerticalOptions="Center"></Label>
+            </StackLayout>
+            <Button Text="Character Wiki"
+                    BackgroundColor="White"
+                    CornerRadius="3"
+                    TextColor="#cc0000"
+                    BorderColor="#cc0000"
+                    BorderWidth="1"
+                    Command="{Binding LinkCommand}"
+                    IsVisible="{Binding WikiVisibility}"
+                    HorizontalOptions="Start"></Button>            
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

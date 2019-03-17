@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
+             x:Class="MarvelHeros.App">
+	<Application.Resources>
+
+        <ResourceDictionary>
+            <!--<Style x:Key="LabelMarvel" TargetType="Label">
+                <Setter Property="TextColor" Value="#000000" />
+                <Setter Property="FontFamily" Value="{StaticResource MarvelRegular}"></Setter>
+                <Setter Property="FontSize" Value="Medium"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+            </Style>-->
+            <OnPlatform x:TypeArguments="x:String" x:Key="MarvelRegular">
+                <On Platform="Android" Value="Marvel-Regular.ttf#Marvel-Regular" />
+            </OnPlatform>            
+
+        </ResourceDictionary>
+
+	</Application.Resources>
+</prism:PrismApplication>
