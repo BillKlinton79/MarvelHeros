@@ -69,7 +69,8 @@ namespace MarvelHeros.ViewModels
         {
             HerosList = new ObservableCollection<Result>();
 
-            GetCharacters();
+            FilterText = "A";
+            GetCharacters("A");
 
             FilterCommand = new DelegateCommand(async () =>
             {
@@ -91,7 +92,7 @@ namespace MarvelHeros.ViewModels
 
         }
 
-        private async void GetCharacters(string nameStarts = "")
+        private async void GetCharacters(string nameStarts)
         {   
             var progress = UserDialogs.Instance.Loading("Loading ...", null, null, true, MaskType.Clear);
 
@@ -102,10 +103,7 @@ namespace MarvelHeros.ViewModels
 
                 var httpClient = new HttpClient();
                 var url = $"https://gateway.marvel.com:443/v1/public/characters?ts=1&nameStartsWith={nameStarts}&apikey={token}&hash=73f8ccaa220af748c9d0a847bc179cda&limit=100";
-
-                if (nameStarts.Equals(""))
-                    url = $"https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey={token}&hash=73f8ccaa220af748c9d0a847bc179cda&limit=100";
-
+                                
                 var result = await httpClient.GetAsync(url);
                 var content = result.Content.ReadAsStringAsync().Result;
 
